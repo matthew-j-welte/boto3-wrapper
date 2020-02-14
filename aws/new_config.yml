@@ -1,4 +1,4 @@
-TableName: third-table
+TableName: fourth-table
 AttributeDefinitions:
 - AttributeName: id
   AttributeType: S
@@ -25,7 +25,9 @@ LocalSecondaryIndexes:
   - AttributeName: application
     KeyType: RANGE
   Projection:
-    ProjectionType: ALL
+    ProjectionType: INCLUDE
+    NonKeyAttributes:
+    - metadata
 - IndexName: iid_index
   KeySchema:
   - AttributeName: id
@@ -33,7 +35,9 @@ LocalSecondaryIndexes:
   - AttributeName: iid
     KeyType: RANGE
   Projection:
-    ProjectionType: ALL
+    ProjectionType: INCLUDE
+    NonKeyAttributes:
+    - metadata
 - IndexName: product_type_index
   KeySchema:
   - AttributeName: id
@@ -41,7 +45,9 @@ LocalSecondaryIndexes:
   - AttributeName: product_type
     KeyType: RANGE
   Projection:
-    ProjectionType: ALL
+    ProjectionType: INCLUDE
+    NonKeyAttributes:
+    - metadata
 - IndexName: timestamp_index
   KeySchema:
   - AttributeName: id
@@ -49,7 +55,9 @@ LocalSecondaryIndexes:
   - AttributeName: timestamp
     KeyType: RANGE
   Projection:
-    ProjectionType: ALL
+    ProjectionType: INCLUDE
+    NonKeyAttributes:
+    - metadata
 ProvisionedThroughput:
   ReadCapacityUnits: 100
   WriteCapacityUnits: 100
