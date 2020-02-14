@@ -1,0 +1,45 @@
+TableName: second-table
+AttributeDefinitions:
+- AttributeName: id
+  AttributeType: S
+- AttributeName: task_id
+  AttributeType: S
+- AttributeName: application
+  AttributeType: S
+- AttributeName: iid
+  AttributeType: S
+- AttributeName: product_type
+  AttributeType: S
+KeySchema:
+- AttributeName: id
+  KeyType: HASH
+- AttributeName: task_id
+  KeyType: RANGE
+LocalSecondaryIndexes:
+- IndexName: application_index
+  KeySchema:
+  - AttributeName: id
+    KeyType: HASH
+  - AttributeName: application
+    KeyType: RANGE
+  Projection:
+    ProjectionType: ALL
+- IndexName: iid_index
+  KeySchema:
+  - AttributeName: id
+    KeyType: HASH
+  - AttributeName: iid
+    KeyType: RANGE
+  Projection:
+    ProjectionType: ALL
+- IndexName: product_type_index
+  KeySchema:
+  - AttributeName: id
+    KeyType: HASH
+  - AttributeName: product_type
+    KeyType: RANGE
+  Projection:
+    ProjectionType: ALL
+ProvisionedThroughput:
+  ReadCapacityUnits: 100
+  WriteCapacityUnits: 100
