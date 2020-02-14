@@ -1,0 +1,17 @@
+TableName: welte-table
+AttributeDefinitions:
+  - id: S
+  - task_id: S
+  - application: S
+  - iid: S
+  - product_type: S
+KeySchema:
+  - id: HASH
+  - task_id: RANGE
+LocalSecondaryIndexes:
+  - application: ALL
+  - iid: ALL
+  - product_type: ALL
+ProvisionedThroughput:
+  ReadCapacityUnits: 100
+  WriteCapacityUnits: 100
