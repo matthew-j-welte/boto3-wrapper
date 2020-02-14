@@ -1,4 +1,4 @@
-TableName: second-table
+TableName: third-table
 AttributeDefinitions:
 - AttributeName: id
   AttributeType: S
@@ -10,6 +10,8 @@ AttributeDefinitions:
   AttributeType: S
 - AttributeName: product_type
   AttributeType: S
+- AttributeName: timestamp
+  AttributeType: N
 KeySchema:
 - AttributeName: id
   KeyType: HASH
@@ -37,6 +39,14 @@ LocalSecondaryIndexes:
   - AttributeName: id
     KeyType: HASH
   - AttributeName: product_type
+    KeyType: RANGE
+  Projection:
+    ProjectionType: ALL
+- IndexName: timestamp_index
+  KeySchema:
+  - AttributeName: id
+    KeyType: HASH
+  - AttributeName: timestamp
     KeyType: RANGE
   Projection:
     ProjectionType: ALL
